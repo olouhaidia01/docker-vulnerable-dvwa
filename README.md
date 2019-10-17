@@ -8,6 +8,12 @@ The aim of DVWA is to practice some of the most common web vulnerability, with v
 
 **WARNING** This image is vulnerable to several kinds of attacks, please don't deploy it to any public servers.
 
+## Build this image
+
+To run this image you need [docker](http://docker.com) installed. Just run the command:
+
+	docker build --build-arg sqreen_token=org_yourSqreenToken -t dvwa .
+
 ## Run this image
 
 To run this image you need [docker](http://docker.com) installed. Just run the command:
