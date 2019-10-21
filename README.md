@@ -18,7 +18,7 @@ To run this image you need [docker](http://docker.com) installed. Just run the c
 
 To run this image you need [docker](http://docker.com) installed. Just run the command:
 
-    docker run --rm -it -p 80:80 vulnerables/web-dvwa
+    docker run --rm -it -p 80:80 sqreen/dvwa
 
 And wait until it download the image and start it, after that you can see the image running in your local machine:
 
