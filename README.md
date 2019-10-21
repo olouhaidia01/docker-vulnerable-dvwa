@@ -12,7 +12,7 @@ The aim of DVWA is to practice some of the most common web vulnerability, with v
 
 To run this image you need [docker](http://docker.com) installed. Just run the command:
 
-	docker build --build-arg sqreen_token=org_yourSqreenToken -t dvwa .
+	docker build -t dvwa .
 
 ## Run this image
 
@@ -25,6 +25,14 @@ And wait until it download the image and start it, after that you can see the im
 ![setup](https://github.com/opsxcq/docker-vulnerable-dvwa/blob/master/setup.png?raw=tru)
 
 Just click on the ```Create / Reset database``` button and it will generate any aditional configuration needed.
+
+### Run with Sqreen
+
+Sqreen is preinstalled on this image. To enable it, you simply need to replace the `docker run` command by the following:
+
+	docker run --rm -e SQREEN_TOKEN=org_yourSqreenToken -e SQREEN_APP_NAME=DVWA -p 80:80 dvwa
+
+All other instructions are the same.
 
 ## Login with default credentials
 
