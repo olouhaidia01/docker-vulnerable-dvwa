@@ -1,10 +1,5 @@
 FROM debian:buster
 
-ARG sqreen_token
-ARG app_name=DVWA
-
-RUN echo "Building DVWA with Sqreen token ${sqreen_token} and name ${app_name}"
-
 LABEL maintainer "opsxcq@strm.sh"
 
 RUN apt-get update && \
@@ -38,7 +33,10 @@ RUN service mysql start && \
     sleep 3 && \
     mysql -uroot -pvulnerables -e "CREATE USER app@localhost IDENTIFIED BY 'vulnerables';CREATE DATABASE dvwa;GRANT ALL privileges ON dvwa.* TO 'app'@localhost;"
 
-RUN curl -s https://download.sqreen.com/php/install.sh > sqreen-install.sh && bash sqreen-install.sh $sqreen_token "$app_name"
+RUN curl -s https://download.sqreen.com/php/install.sh > sqreen-install.sh && bash sqreen-install.sh 'org_123456789012345678901234567890123456789012345678901234567890' '${SQREEN_APP_NAME}'
+RUN sqreen-installer config '${SQREEN_TOKEN}' '${SQREEN_APP_NAME}'
+RUN sed -i s/\\\\//g /etc/php/7.3/apache2/conf.d/50-sqreen.ini
+
 RUN sed -i s/"allow_url_include = Off"/"allow_url_include = On"/ /etc/php/7.3/apache2/php.ini
 
 EXPOSE 80
