@@ -11,7 +11,7 @@ else
 fi
 
 if [ -n "$SQREEN_URL" ]; then
-	sqreen-installer set_ini url $SQREEN_URL
+	sqreen-installer set_ini sqreen_url $SQREEN_URL
 fi
 
 chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
