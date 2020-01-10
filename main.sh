@@ -10,6 +10,10 @@ else
 	sqreen-installer config "${SQREEN_TOKEN}" "${SQREEN_APP_NAME}"
 fi
 
+if [ -n "$SQREEN_URL" ]; then
+	sqreen-installer set_ini url $SQREEN_URL
+fi
+
 chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 
 echo '[+] Starting mysql...'
